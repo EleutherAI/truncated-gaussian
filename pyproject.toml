@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "truncated-gaussian"
+description = "Method-of-moments estimation and sampling for truncated multivariate Gaussian distributions."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT License"}
+dependencies = [
+    "numpy",
+    "scipy",
+]
+version = "0.0.1"
+
+[project.optional-dependencies]
+dev = [
+    "pre-commit",
+    "pytest",
+]
+
+[tool.pyright]
+include = ["truncated_gaussian*"]
+reportPrivateImportUsage = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+include = ["truncated_gaussian*"]
+
+[tool.ruff]
+# Enable pycodestyle (`E`), Pyflakes (`F`), and isort (`I`) codes
+# See https://beta.ruff.rs/docs/rules/ for more possible rules
+select = ["E", "F", "I"]
+# Same as Black.
+line-length = 88
+# Avoid automatically removing unused imports in __init__.py files.
+# Such imports will be flagged with a dedicated message suggesting
+# that the import is either added to the module's __all__ symbol
+ignore-init-module-imports = true
